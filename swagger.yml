@@ -91,3 +91,21 @@ paths:
           content:
             text/plain:
               example: "Bad todo"
+    get:
+      summary: Get todo by id
+      responses:
+        200:
+          description: successful response
+          content:
+            application/json:
+              example:
+                - id: "550e8400-e29b-41d4-a716-446655440000"
+                  isCompleted: true
+                  createdAt: "2023-10-19T00:00:00.000Z"
+                  updatedAt: "2023-10-19T00:00:00.000Z"
+                  text: "todo completed"
+        400:
+          description: Bad request
+          content:
+            text/plain:
+              example: "Bad todo"

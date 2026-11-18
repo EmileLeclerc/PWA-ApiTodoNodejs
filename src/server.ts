@@ -26,11 +26,11 @@ app.use(express.json());
 
 app.use('/api', createTodoRoutes());
 app.use('/', createHealthRoutes());
-
-// if (process.env.NODE_ENV === 'development') {
-//   const swaggerDocument = yaml.load(path.join(__dirname, '../swagger.yml'));
-//   app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-// }
+// fix de mathieu
+if (process.env.NODE_ENV !== 'production') {
+    const swaggerDocument = yaml.load(path.resolve('swagger.yml'));
+    app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+}
 
 app.get('/ping', (req, res) => {
   res.json({ message: 'pong', timestamp: new Date().toISOString() });
@@ -49,6 +49,6 @@ process.on('unhandledRejection', (reason, promise) => {
 app.listen(port, () => {
   console.log(`🚀 Server is running on port ${port}`);
   console.log(`📚 API Documentation available at http://localhost:${port}/swagger`);
-  console.log(`❤️  Health check available at http://localhost:${port}/health`);
+  console.log(`❤️ Health check available at http://localhost:${port}/health`);
   console.log(`🏓 Ping endpoint available at http://localhost:${port}/ping`);
 });

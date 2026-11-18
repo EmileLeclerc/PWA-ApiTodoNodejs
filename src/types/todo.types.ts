@@ -6,6 +6,7 @@ export interface Todo {
   updatedAt: Date;
 }
 export interface CreateTodoRequest {
+    text: string;
   // Ajoute ce qu'il manque en te basant sur la route POST dans ton swagger. Il manque un champ.
 }
 
